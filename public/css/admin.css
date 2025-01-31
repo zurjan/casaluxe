@@ -1,0 +1,84 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+/* Styling för navigationmenyn */
+nav {
+  background-color: #333;
+  padding: 10px;
+  color: white;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Huvudstyling */
+.container {
+  margin: 20px;
+}
+
+h1, h2 {
+  color: #333;
+}
+
+/* Styling för produktlistan */
+.product {
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product h3 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.product p {
+  margin: 10px 0;
+}
+
+.product a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.product a:hover {
+  text-decoration: underline;
+}
+
+/* Styling för knapp */
+.add-product-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px 0;
+  background-color: #28a745;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.add-product-btn:hover {
+  background-color: #218838;
+}
