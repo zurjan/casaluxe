@@ -81,7 +81,9 @@
             <%= product.description %>
           </p>
           <p>Pris: <%= product.price %> SEK</p>
-          <a href="/product/<%= product.id %>">Visa Produkt</a>
+          <p> <%= product.brand %></p>
+          <a href="product-ejs"><img src="img/products/<%= product.image %>" width=500 height=500>
+            
         </div>
         <% }) %>
     </div>
