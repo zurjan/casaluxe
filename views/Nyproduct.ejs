@@ -18,7 +18,7 @@
   <!--/ meta -->
 
   <!-- title -->
-  <title>Casa Luxe | Hem</title>
+  <title>Casa Luxe | Nyprodukt</title>
   <!--/ title -->
 
   <!-- links -->
@@ -68,50 +68,87 @@
   </nav>
   <!--/ navbar -->
 
-     <!--slideshow -->
-     <div class="custom-div">
-      <a href="Nyprodukt.html">  
-      <h1 class="custom-h1">Nya produkter</h1>
-      </a>
-    </div>
-    <div class="ncontainer">
-      <div class="nslide">
-        <div class="nslides" id="nslides">
-          <a href="/Nyproduct?slug=morkgra"><img src="/img/uppload/image1.jpg" alt="Mörkgrå Möbler"></a>
-<a href="/Nyproduct?slug=ljusgra"><img src="/img/uppload/image2.jpg" alt="Ljusgrå Möbler"></a>
-<a href="/Nyproduct?slug=rod"><img src="/img/uppload/image3.jpg" alt="Röd Möbler"></a>
-<a href="/Nyproduct?slug=beige"><img src="/img/uppload/image4.jpg" alt="Beige Möbler"></a>
-<a href="/Nyproduct?slug=bla"><img src="/img/uppload/image5.jpg" alt="Blå Möbler"></a>
-<a href="/Nyproduct?slug=svart"><img src="/img/uppload/image6.jpg" alt="Svart Möbler"></a>
-<a href="/Nyproduct?slug=vit"><img src="/img/uppload/image7.jpg" alt="Vit Möbler"></a>
-<a href="/Nyproduct?slug=svart2"><img src="/img/uppload/image8.jpg" alt="Svart Möbler 2"></a>
+  <h3>Nya Produkter</h3>
+  <div class="related-products" id="related-products">
+      <ul>
+         
+          <li th:each="product : ${relatedProducts}">
+            <img th:src="@{/img/uppload/{imageName}(imageName=${product.img})}" alt="Product Image" />
 
-      </div>
-      
-      </div>
+              <h4 th:text="${product.name}"></h4>
+              <p th:text="${product.price}"></p>
+          </li>
+      </ul>
   </div>
 
-  <!-- main -->
-  <main>
-    <div>
-      <% products.forEach(product=> { %>
-        <div>
-          <h3>
-            <%= product.name %>
-          </h3>
-          <p>
-            <%= product.description %>
-          </p>
-          <p>Pris: <%= product.price %> SEK</p>
-          <a href="/product/<%= product.id %>">Visa Produkt</a>
-        </div>
-        <% }) %>
-    </div>
-  </main>
-  <!-- main -->
+ <script>
+
+const products = [
+  { slug: "morkgra", img: "/img/uppload/image1.jpg", name: "Nya Möbler", desc: "Smartphone XYZ är den senaste modellen från Brand XYZ. Den har en 6,5-tums AMOLED-skärm, en kraftfull Snapdragon 888-processor och ett 48 MP kamerasystem. Perfekt för både arbete och underhållning, med lång batteritid och snabb laddning.", brand: "Casa Luxe", price: "1990 SEK", color: "Mörkgrå" },
+
+  { slug: "ljusgra", img: "/img/uppload/image2.jpg", name: "Nya Möbler", desc: "Smartphone XYZ är den senaste modellen från Brand XYZ. Den har en 6,5-tums AMOLED-skärm, en kraftfull Snapdragon 888-processor och ett 48 MP kamerasystem. Perfekt för både arbete och underhållning, med lång batteritid och snabb laddning.", brand: "Casa Luxe", price: "1990 SEK", color: "Ljusgrå" },
+
+  { slug: "rod", img: "/img/uppload/image3.jpg", name: "Nya Möbler", desc: "Smartphone XYZ är den senaste modellen från Brand XYZ. Den har en 6,5-tums AMOLED-skärm, en kraftfull Snapdragon 888-processor och ett 48 MP kamerasystem. Perfekt för både arbete och underhållning, med lång batteritid och snabb laddning.", brand: "Casa Luxe", price: "1990 SEK", color: "Röd" },
+
+  { slug: "beige", img: "/img/uppload/image4.jpg", name: "Nya Möbler", desc: "Smartphone XYZ är den senaste modellen från Brand XYZ. Den har en 6,5-tums AMOLED-skärm, en kraftfull Snapdragon 888-processor och ett 48 MP kamerasystem. Perfekt för både arbete och underhållning, med lång batteritid och snabb laddning.", brand: "Casa Luxe", price: "1990 SEK", color: "Beige" },
+
+  { slug: "bla", img: "/img/uppload/image5.jpg", name: "Nya Möbler", desc: "Smartphone XYZ är den senaste modellen från Brand XYZ. Den har en 6,5-tums AMOLED-skärm, en kraftfull Snapdragon 888-processor och ett 48 MP kamerasystem. Perfekt för både arbete och underhållning, med lång batteritid och snabb laddning.", brand: "Casa Luxe", price: "1990 SEK", color: "Blå" },
+
+  { slug: "svart", img: "/img/uppload/image6.jpg", name: "Nya Möbler", desc: "Smartphone XYZ är den senaste modellen från Brand XYZ. Den har en 6,5-tums AMOLED-skärm, en kraftfull Snapdragon 888-processor och ett 48 MP kamerasystem. Perfekt för både arbete och underhållning, med lång batteritid och snabb laddning.", brand: "Casa Luxe", price: "1990 SEK", color: "Svart" },
+
+  { slug: "vit", img: "/img/uppload/image7.jpg", name: "Nya Möbler", desc: "Smartphone XYZ är den senaste modellen från Brand XYZ. Den har en 6,5-tums AMOLED-skärm, en kraftfull Snapdragon 888-processor och ett 48 MP kamerasystem. Perfekt för både arbete och underhållning, med lång batteritid och snabb laddning.", brand: "Casa Luxe", price: "1990 SEK", color: "Vit" },
+
+  { slug: "svart2", img: "/img/uppload/image8.jpg", name: "Nya Möbler", desc: "Smartphone XYZ är den senaste modellen från Brand XYZ. Den har en 6,5-tums AMOLED-skärm, en kraftfull Snapdragon 888-processor och ett 48 MP kamerasystem. Perfekt för både arbete och underhållning, med lång batteritid och snabb laddning.", brand: "Casa Luxe", price: "1990 SEK", color: "Svart2" }
+];
+
+
+// urlslug
+const urlParams = new URLSearchParams(window.location.search);
+const slug = urlParams.get("slug");
+
+const product = products.find(p => p.slug === slug);
+
+if (product) {
+  document.getElementById("product-name").textContent = product.name;
+  document.getElementById("product-img").src = product.img;
+  document.getElementById("product-img").alt = product.name;
+  document.getElementById("product-brand").textContent = "Märke: " + product.brand;
+  document.getElementById("product-price").textContent = "Pris: " + product.price;
+  document.getElementById("product-desc").textContent = product.desc;
+} else {
+  document.getElementById("nyproduct").innerHTML = "<p>Produkten hittades inte.</p>";
+}
+
+// random
+function getRandomProducts(excludeSlug, count = 3) {
+  const filteredProducts = products.filter(p => p.slug !== excludeSlug);
+  return filteredProducts.sort(() => 0.5 - Math.random()).slice(0, count);
+}
+
+const relatedProducts = getRandomProducts(slug);
+const relatedContainer = document.getElementById("related-products");
+
+relatedProducts.forEach(p => {
+  const link = document.createElement("a");
+  link.href = `Nyproduct.html?slug=${p.slug}`;
+
+  const img = document.createElement("img");
+  img.src = p.img;
+  img.alt = p.name;
+
+  link.appendChild(img);
+  relatedContainer.appendChild(link);
+});
+
+
+ </script>
+  
 
 
 
+
+
+  
   <!--footer -->
   <footer class=" footer-container">
     <!--footer accordeon menu -->
@@ -308,7 +345,7 @@
 
 
 
-  <script src="/js/main.js"></script>
+  <script src="/public/js/main.js"></script>
 </body>
 
 </html>

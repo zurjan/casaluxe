@@ -535,3 +535,18 @@ a {
   color: inherit; 
 }
 
+body { font-family: Arial, sans-serif; text-align: center; }
+.product-details {
+    border: 2px solid #ddd;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+    background: #f9f9f9;
+}
+.product-details img {
+   width: 250px; height: auto; margin-bottom: 10px; }
+.related-products { 
+  display: flex; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
+.related-products img { 
+  width: 100px; cursor: pointer; margin: 5px; }
