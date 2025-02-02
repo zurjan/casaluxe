@@ -26,6 +26,7 @@ app.get("/Nyproduct", (req, res) => {
 
 
 
+
 // Rutter
 const indexRouter = require('./routes/index');
 const NyproductRouter = require('./routes/Nyproduct');
