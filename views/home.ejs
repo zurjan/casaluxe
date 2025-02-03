@@ -68,25 +68,68 @@
   </nav>
   <!--/ navbar -->
 
+ <!-- Sorterings- och filtermenyer -->
+ <form id="filter-form">
+  <label for="sort">Sortera:</label>
+  <select id="sort" name="sort">
+      <option value="">Välj...</option>
+      <option value="low-to-high">Pris: Lågt till högt</option>
+      <option value="high-to-low">Pris: Högt till lågt</option>
+  </select>
 
-  <!-- main -->
+  <label for="color">Färg:</label>
+  <select id="color" name="color">
+      <option value="">färger</option>
+      <option value="red">Röd</option>
+      <option value="blue">Blå</option>
+      <option value="beige">Beige</option>
+      <option value="vit">Vit</option>
+      <option value="Svart">Svart</option>
+  </select>
+
+  <button type="submit">Filtrera</button>
+</form>
+
+
+  <!-- main och produkt-grid -->
   <main>
-    <div>
+    <div class="product-grid">
       <% products.forEach(product=> { %>
-        <div>
-          <h3>
+        <div class="product-card">
+        <a href="product.ejs"><img src="/img/products/<%= product.image %>" alt="<%= product.name %>">
+        </a>
+          <h2>
             <%= product.name %>
-          </h3>
-          <p>
-            <%= product.description %>
+          </h2>
+          <p class="price">
+            <%= product.price %>
           </p>
-          <p>Pris: <%= product.price %> SEK</p>
-          <a href="/product/<%= product.id %>">Visa Produkt</a>
+          <div class="icons">
+            <button class="wishlist"><i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
+            <button class="home"><i class="fa fa-heart" aria-hidden="true"></i></button>
+          </div>
         </div>
-        <% }) %>
+        <% }); %>
     </div>
   </main>
-  <!-- main -->
+
+  <script>
+    document.getElementById('filter-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        // Hämta valda värden
+        let sort = document.getElementById('sort').value;
+        let color = document.getElementById('color').value;
+
+        // Bygg URL-sträng med parametrar
+        let queryString = "?";
+        if (sort) queryString += `sort=${sort}&`;
+        if (color) queryString += `color=${color}`;
+
+        // Navigera till ny URL med filter och sortering
+        window.location.href = queryString;
+    });
+</script>
 
 
 
@@ -97,70 +140,70 @@
       <button class="accordion">CASA LUXE</button>
       <div class="panel">
         <ul class="text-black dark:text-black font-medium ">
-          <li >
-            <a href="#" >Om Oss</a>
+          <li>
+            <a href="#">Om Oss</a>
           </li>
-          <li >
-            <a href="#" >Jobba hos oss</a>
+          <li>
+            <a href="#">Jobba hos oss</a>
           </li>
-          <li >
-            <a href="#" >Brand Center</a>
+          <li>
+            <a href="#">Brand Center</a>
           </li>
-          <li >
-            <a href="#" >Blog</a>
+          <li>
+            <a href="#">Blog</a>
           </li>
         </ul>
       </div>
 
       <button class="accordion">HJÄLPCENTER</button>
       <div class="panel">
-        <ul >
-          <li >
-            <a href="#" >Fakturafrågor</a>
+        <ul>
+          <li>
+            <a href="#">Fakturafrågor</a>
           </li>
-          <li >
-            <a href="#" >Produktfrågor</a>
+          <li>
+            <a href="#">Produktfrågor</a>
           </li>
-          <li >
-            <a href="#" >Teknisksupport</a>
+          <li>
+            <a href="#">Teknisksupport</a>
           </li>
-          <li >
-            <a href="/contact" >Kontakta Oss</a>
+          <li>
+            <a href="/contact">Kontakta Oss</a>
           </li>
         </ul>
       </div>
 
       <button class="accordion">VILLKÖR</button>
       <div class="panel">
-        <ul >
-          <li >
-            <a href="#" >Användarevillkör</a>
+        <ul>
+          <li>
+            <a href="#">Användarevillkör</a>
           </li>
-          <li >
-            <a href="#" >Leverans</a>
+          <li>
+            <a href="#">Leverans</a>
           </li>
-          <li >
-            <a href="#" >Allmänna villkor</a>
+          <li>
+            <a href="#">Allmänna villkor</a>
           </li>
-          <li >
-            <a href="#" >GDPR</a>
+          <li>
+            <a href="#">GDPR</a>
           </li>
         </ul>
       </div>
       <button class="accordion">MITT KONTO</button>
       <div class="panel">
-        <ul >
-          <li >
-            <a href="#" >Önskelista</a>
+        <ul>
+          <li>
+            <a href="#">Önskelista</a>
           </li>
-          <li >
-            <a href="#" >Min Vagn</a>
+          <li>
+            <a href="#">Min Vagn</a>
           </li>
-          <li >
-            <a href="#" >Min Ordrar</a>
+          <li>
+            <a href="#">Min Ordrar</a>
           </li>
-          <li >
-            <a href="#" >Min Fakturor</a>
+          <li>
+            <a href="#">Min Fakturor</a>
           </li>
         </ul>
       </div>
@@ -174,74 +217,74 @@
           <a href="/"><img class="logo" src="/img/logo/logo.webp" alt="logo"></a>
         </div>
         <div>
-          <h2 >
+          <h2>
             Casa Luxe</h2>
-          <ul >
-            <li >
-              <a href="#" >Om Oss</a>
+          <ul>
+            <li>
+              <a href="#">Om Oss</a>
             </li>
-            <li >
-              <a href="#" >Jobba hos oss</a>
+            <li>
+              <a href="#">Jobba hos oss</a>
             </li>
-            <li >
-              <a href="#" >Brand Center</a>
+            <li>
+              <a href="#">Brand Center</a>
             </li>
-            <li >
-              <a href="#" >Blog</a>
+            <li>
+              <a href="#">Blog</a>
             </li>
           </ul>
         </div>
         <div>
-          <h2 >
+          <h2>
             Hjälpcenter</h2>
-          <ul >
-            <li >
-              <a href="#" >Fakturafrågor</a>
+          <ul>
+            <li>
+              <a href="#">Fakturafrågor</a>
             </li>
-            <li >
-              <a href="#" >Produktfrågor</a>
+            <li>
+              <a href="#">Produktfrågor</a>
             </li>
-            <li >
-              <a href="#" >Teknisksupport</a>
+            <li>
+              <a href="#">Teknisksupport</a>
             </li>
-            <li >
-              <a href="/contact"hover:underline">Kontakta Oss</a>
+            <li>
+              <a href="/contact" hover:underline">Kontakta Oss</a>
             </li>
           </ul>
         </div>
         <div>
-          <h2 >
+          <h2>
             Villkör</h2>
-          <ul >
-            <li >
-              <a href="#" >Användarevillkör</a>
+          <ul>
+            <li>
+              <a href="#">Användarevillkör</a>
             </li>
-            <li >
-              <a href="#" >Leverans</a>
+            <li>
+              <a href="#">Leverans</a>
             </li>
-            <li >
-              <a href="#" >Allmänna villkor</a>
+            <li>
+              <a href="#">Allmänna villkor</a>
             </li>
-            <li >
-              <a href="#" >GDPR</a>
+            <li>
+              <a href="#">GDPR</a>
             </li>
           </ul>
         </div>
         <div>
-          <h2 >
+          <h2>
             Mitt Konto</h2>
-          <ul >
-            <li >
-              <a href="#" >Önskelista</a>
+          <ul>
+            <li>
+              <a href="#">Önskelista</a>
             </li>
-            <li >
-              <a href="#" >Min Vagn</a>
+            <li>
+              <a href="#">Min Vagn</a>
             </li>
-            <li >
-              <a href="#" >Min Ordrar</a>
+            <li>
+              <a href="#">Min Ordrar</a>
             </li>
-            <li >
-              <a href="#" >Min Fakturor</a>
+            <li>
+              <a href="#">Min Fakturor</a>
             </li>
           </ul>
         </div>
@@ -262,8 +305,7 @@
         <div class="social-icons ">
           <a href="https://www.linkedin.com" target="_blank"><img src="/img/icons/linkedin.png" alt="linkedin"></a>
           <a href="https://www.facebook.com" target="_blank"><img src="/img/icons/facebook.png" alt="facebook"></a>
-          <a href="https://www.instagram.com/" target="_blank"><img src="/img/icons/instagram.png"
-              alt="instagram"></a>
+          <a href="https://www.instagram.com/" target="_blank"><img src="/img/icons/instagram.png" alt="instagram"></a>
           <a href="https://www.youtube.com" target="_blank"><img src="/img/icons/youtube.png" alt="youtube"></a>
         </div>
         <div class="betal-icons">

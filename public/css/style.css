@@ -236,7 +236,110 @@ input[type="submit"]:hover {
   background-color: #45a049;
 }
 
+/* Styla formuläret för sortering och filter */
+form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
 
+select, button {
+  background-color:amber;
+  padding: 10px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #333;
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+
+/* Grid-container för produkterna */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Produktkort */
+.product-card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.product-card h2 {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+.price {
+  font-size: 1em;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Ikoner */
+.icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+button {
+  border: none;
+  background: none;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.7;
+}
+
+/* Responsiv anpassning */
+@media (min-width: 480px) {
+  .product-grid {
+  grid-template-columns:1fr;
+  }
+}
+
+@media (min-width: 768px) {
+  .product-grid {
+   grid-template-columns:1fr 1fr;
+  }
+}
+
+@media (min-width: 992px) {
+  .product-grid {
+  grid-template-columns: repeat(4, 1fr);
+  }
+}
 
 /* footer */
 .footer-container {
