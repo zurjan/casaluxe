@@ -25,3 +25,18 @@ for (i = 0; i < acc.length; i++) {
     }
   });
 }
+
+//slideshow
+document.querySelectorAll("#nslides img").forEach((img, index) => {
+  const slugs = [
+    "morkgra", "ljusgra", "rod", "beige",
+    "bla", "svart", "vit", "svart2"
+];
+  
+  img.addEventListener("click", () => {
+      window.location.href = `Nyprodukt?slug=${slugs[index]}`;
+  });
+});
+
+
+

@@ -6,6 +6,7 @@ const db = require('./config/db');
 
 const app = express();
 
+
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -18,16 +19,24 @@ app.use(session({
   saveUninitialized: true
 }));
 
+
+app.get("/Nyproduct", (req, res) => {
+  res.render('Nyproduct', { title: 'Nyproduct Page' });
+});
+
+
+
+
 // Rutter
 const indexRouter = require('./routes/index');
-const productRouter = require('./routes/product');
+const NyproductRouter = require('./routes/Nyproduct');
 const adminRouter = require('./routes/admin');
 const authRouter = require('./routes/auth');
 const contactRouter = require('./routes/contact');
 const categoryRouter = require('./routes/category');
 
 app.use('/', indexRouter);
-app.use('/product', productRouter);
+app.use('/Nyproduct', NyproductRouter);
 app.use('/admin', adminRouter);
 app.use('/auth', authRouter);
 app.use('/contact', contactRouter);
