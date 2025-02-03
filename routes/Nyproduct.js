@@ -1,37 +1,40 @@
 const express = require('express');
 const router = express.Router();
+const db = require('../config/db');
 
+router.get('/', (req, res) => {
+    try {
+        const posts = db.prepare('SELECT * FROM posts').all(); 
+        res.render('Nyproduct', { posts: posts });
+    } catch (err) {
+        console.error('Database Error:', err);
+        res.status(500).send('Database Error');
+    }
+});
+router.get('/:urlSlug', (req, res, next) => {
+  const urlSlug = req.params.urlSlug; 
 
-const products = [
-    { slug: "morkgra", img: "/img/uppload/image1.jpg", name: "Nya Möbler", desc: "Smartphone XYZ är den senaste modellen från Brand XYZ. Den har en 6,5-tums AMOLED-skärm, en kraftfull Snapdragon 888-processor och ett 48 MP kamerasystem. Perfekt för både arbete och underhållning, med lång batteritid och snabb laddning.", brand: "Casa Luxe", price: "1990 SEK", color: "Mörkgrå" },
-    { slug: "ljusgra", img: "/img/uppload/image2.jpg", name: "Nya Möbler", desc: "Smartphone XYZ är den senaste modellen från Brand XYZ. Den har en 6,5-tums AMOLED-skärm, en kraftfull Snapdragon 888-processor och ett 48 MP kamerasystem. Perfekt för både arbete och underhållning, med lång batteritid och snabb laddning.", brand: "Casa Luxe", price: "1990 SEK", color: "Ljusgrå" },
-    { slug: "rod", img: "/img/uppload/image3.jpg", name: "Nya Möbler", desc: "Smartphone XYZ är den senaste modellen från Brand XYZ. Den har en 6,5-tums AMOLED-skärm, en kraftfull Snapdragon 888-processor och ett 48 MP kamerasystem. Perfekt för både arbete och underhållning, med lång batteritid och snabb laddning.", brand: "Casa Luxe", price: "1990 SEK", color: "Röd" },
-    { slug: "beige", img: "/img/uppload/image4.jpg", name: "Nya Möbler", desc: "Smartphone XYZ är den senaste modellen från Brand XYZ. Den har en 6,5-tums AMOLED-skärm, en kraftfull Snapdragon 888-processor och ett 48 MP kamerasystem. Perfekt för både arbete och underhållning, med lång batteritid och snabb laddning.", brand: "Casa Luxe", price: "1990 SEK", color: "Beige" },
-    { slug: "bla", img: "/img/uppload/image5.jpg", name: "Nya Möbler", desc: "Smartphone XYZ är den senaste modellen från Brand XYZ. Den har en 6,5-tums AMOLED-skärm, en kraftfull Snapdragon 888-processor och ett 48 MP kamerasystem. Perfekt för både arbete och underhållning, med lång batteritid och snabb laddning.", brand: "Casa Luxe", price: "1990 SEK", color: "Blå" },
-    { slug: "svart", img: "/img/uppload/image6.jpg", name: "Nya Möbler", desc: "Smartphone XYZ är den senaste modellen från Brand XYZ. Den har en 6,5-tums AMOLED-skärm, en kraftfull Snapdragon 888-processor och ett 48 MP kamerasystem. Perfekt för både arbete och underhållning, med lång batteritid och snabb laddning.", brand: "Casa Luxe", price: "1990 SEK", color: "Svart" },
-    { slug: "vit", img: "/img/uppload/image7.jpg", name: "Nya Möbler", desc: "Smartphone XYZ är den senaste modellen från Brand XYZ. Den har en 6,5-tums AMOLED-skärm, en kraftfull Snapdragon 888-processor och ett 48 MP kamerasystem. Perfekt för både arbete och underhållning, med lång batteritid och snabb laddning.", brand: "Casa Luxe", price: "1990 SEK", color: "Vit" },
-    { slug: "svart2", img: "/img/uppload/image8.jpg", name: "Nya Möbler", desc: "Smartphone XYZ är den senaste modellen från Brand XYZ. Den har en 6,5-tums AMOLED-skärm, en kraftfull Snapdragon 888-processor och ett 48 MP kamerasystem. Perfekt för både arbete och underhållning, med lång batteritid och snabb laddning.", brand: "Casa Luxe", price: "1990 SEK", color: "Svart2" }
-];
+  try {
+      const post = db.prepare('SELECT * FROM posts WHERE urlSlug = ?').get(urlSlug);
+      console.log('Post:', post); 
 
+      if (post) {
+          const randomPosts = db.prepare('SELECT * FROM posts WHERE id != ? ORDER BY RANDOM() LIMIT 3').all(post.id);
+          console.log('Random Posts:', randomPosts); 
 
-router.get('/Nyproduct', function(req, res, next) {
-  const slug = req.query.slug;  
-  
-  
-  const product = products.find(p => p.slug === slug);
-  
- 
-  if (product) {
-    res.render('Nyproduct', { 
-      title: product.name, 
-      product: product  
-    });
-  } else {
-    res.status(404).send('Product not found');
+          res.render('Nyproduct', { title: post.namn, post: post, randomPosts: randomPosts });
+      } else {
+          res.status(404).send('Product not found');
+      }
+  } catch (err) {
+      console.error('Database Error:', err);
+      res.status(500).send('Database Error');
   }
 });
 
+
 module.exports = router;
+
 
 
 
