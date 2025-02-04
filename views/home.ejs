@@ -67,7 +67,7 @@
     </div>
   </nav>
   <!--/ navbar -->
-  <main>
+  
  <!-- Sorterings- och filtermenyer -->
  <form id="filter-form">
   <label for="sort">Sortera:</label>
@@ -89,8 +89,6 @@
 
   <button type="submit">Filtrera</button>
 </form>
-
-
   <!-- main och produkt-grid -->
   
     <div class="product-grid">
@@ -111,28 +109,6 @@
         </div>
         <% }); %>
     </div>
-  </main>
-
-  <script>
-    document.getElementById('filter-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        
-        // Hämta valda värden
-        let sort = document.getElementById('sort').value;
-        let color = document.getElementById('color').value;
-
-        // Bygg URL-sträng med parametrar
-        let queryString = "?";
-        if (sort) queryString += `sort=${sort}&`;
-        if (color) queryString += `color=${color}`;
-
-        // Navigera till ny URL med filter och sortering
-        window.location.href = queryString;
-    });
-</script>
-
-
-
   <!--footer -->
   <footer class=" footer-container">
     <!--footer accordeon menu -->
