@@ -67,7 +67,7 @@
     </div>
   </nav>
   <!--/ navbar -->
-
+<main>
      <!--slideshow -->
      <div class="custom-div">
       <a href="/Nyproduct">  
@@ -90,26 +90,11 @@
       
       </div>
   </div>
-
+</main>
   
 
   <!-- main -->
-  <main>
-    <div>
-      <% products.forEach(product=> { %>
-        <div>
-          <h3>
-            <%= product.name %>
-          </h3>
-          <p>
-            <%= product.description %>
-          </p>
-          <p>Pris: <%= product.price %> SEK</p>
-          <a href="/product/<%= product.id %>">Visa Produkt</a>
-        </div>
-        <% }) %>
-    </div>
-  </main>
+ 
   <!-- main -->
 
 
