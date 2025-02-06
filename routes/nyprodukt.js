@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../config/db');
 
 
-// نمایش لیست تمام محصولات در nyprodukt
+
 router.get('/', (req, res) => {
   db.all("SELECT * FROM posts", [], (err, rows) => {
     if (err) {
@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
   });
 });
 
-// نمایش صفحه‌ی مخصوص هر محصول بر اساس urlSlug
+
 router.get('/:urlSlug', (req, res) => {
   const urlSlug = req.params.urlSlug;  
 

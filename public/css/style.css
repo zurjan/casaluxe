@@ -565,9 +565,9 @@ padding-bottom: 10px;
   
 }
 
-/* استایل برای اسلاید شو */
+
 /* Style for the random product slideshow */
-/* استایل برای اسلایدشو */
+
 .product-slideshow-container {
   width: 100%;
   overflow: hidden;
@@ -586,21 +586,21 @@ padding-bottom: 10px;
   flex: 0 0 auto;
   width: 300px;
   margin-right: 20px;
-  position: relative; /* برای دادن موقعیت به div های داخلی */
-  overflow: hidden; /* تصویر بیرون نزنه */
+  position: relative; 
+  overflow: hidden; 
 }
 
-/* برای عکس‌ها */
+
 .slide img {
   width: 100%;
   height: auto;
   border-radius: 8px;
-  transition: transform 0.5s ease; /* اینجا انتقال تصویر به اندازه ۰٫۳ ثانیه گذاشته شده */
+  transition: transform 0.5s ease;
 }
 
-/* زمانی که موس روی هر تصویر میره، سایزش تغییر کنه */
+
 .slide:hover img {
-  transform: scale(1.3); /* سایز تصویر به اندازه ۳۰٪ بزرگتر میشه */
+  transform: scale(1.3); 
 }
 
 .slide-info {
@@ -610,7 +610,6 @@ padding-bottom: 10px;
   text-align: center;
 }
 
-/* انیمیشن حرکت */
 @keyframes slide {
   0% {
     transform: translateX(0);
