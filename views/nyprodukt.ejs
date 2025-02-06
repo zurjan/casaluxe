@@ -71,25 +71,23 @@
   
   
   
-<div class="product-grid">
+  <div class="nyprodukt-grid">
     <% products.forEach(product => { %>
-      <div class="product-card">
-        <a href="/nyprodukt/<%= product.urlSlug %>">
-          <img src="<%= product.featuredImage %>" alt="<%= product.namn %>">
+      <div class="nyprodukt-card">
+        <a href="/nyprodukt/<%= product.urlSlug %>" class="product-link">
+          <img src="<%= product.featuredImage %>" alt="<%= product.namn %>" class="product-image">
         </a>
-        <h2><%= product.namn %></h2>
-        <p class="price"><%= product.pris %> </p>
-        <div class="icons">
-          <button class="wishlist"><i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
-          <button class="home"><i class="fa fa-heart" aria-hidden="true"></i></button>
+        <h2 class="product-name"><%= product.namn %></h2>
+        <p class="product-price"><%= product.pris %> </p>
+        <div class="product-icons">
+          <button class="wishlist-button"><i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
+          <button class="home-button"><i class="fa fa-heart" aria-hidden="true"></i></button>
         </div>
       </div>
     <% }); %>
-  </div>
+</div>
+
   <!-- Slideshow Section -->
-
-
-
 <div class="product-slideshow-container">
     <div class="slideshow-inner">
       <% products.forEach((product) => { %>
