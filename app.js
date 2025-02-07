@@ -28,14 +28,12 @@ const categoryRouter = require('./routes/category');
 const nyproduktRouter = require('./routes/nyprodukt');
 
 app.get("/nyprodukt/:urlSlug", function (req, res) {
-
   const urlSlug = req.params.urlSlug;  
 
   try {
       const post = db.prepare("SELECT * FROM posts WHERE urlSlug = ?").get(urlSlug);
       if (post) {
-        const randomPosts = db.prepare('SELECT * FROM posts WHERE id BETWEEN 1 AND 8 AND id != ? ').all(post.id);
-        res.render('nyprodukt', { title: post.namn, post: post, randomPosts: randomPosts });
+        res.render('nyprodukt', { title: post.namn, product: post });
       } else {
           res.status(404).send("Product not found");
       }
@@ -44,6 +42,7 @@ app.get("/nyprodukt/:urlSlug", function (req, res) {
       res.status(500).send("Internal Server Error");
   }
 });
+
 
 
 app.use('/', indexRouter);

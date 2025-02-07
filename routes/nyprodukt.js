@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 });
 
 
-router.get('/:urlSlug', (req, res) => {
+router.get('/nyprodukt/:urlSlug', (req, res) => {
   const urlSlug = req.params.urlSlug;  
 
   db.get("SELECT * FROM posts WHERE urlSlug = ?", [urlSlug], (err, post) => {
