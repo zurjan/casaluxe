@@ -67,6 +67,24 @@
     </div>
   </nav>
   <!--/ navbar -->
+
+  <!-- Nyprodukt Slideshow Section -->
+<div class="mt-60 mx-16">
+  <h1 class="text-left text-black text-2xl font-bold max-w-xs mb-6">
+    Nya produkter
+  </h1>
+  <div class="overflow-x-auto whitespace-nowrap border-4 border-gray-200 rounded-lg relative h-52">
+    <div class="inline-flex">
+      <% posts.forEach(post => { %>
+        <div class="mr-4">
+          <a href="/nyprodukt/<%= post.urlSlug %>">
+            <img src="<%= post.featuredImage %>" alt="image" class="w-86 h-60 object-cover rounded-lg transition-transform duration-300 transform hover:scale-110">
+          </a>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</div>
   
  <!-- Sorterings- och filtermenyer -->
  <form id="filter-form">
@@ -89,6 +107,13 @@
 
   <button type="submit">Filtrera</button>
 </form>
+
+
+
+
+
+
+
   <!-- main och produkt-grid -->
   
     <div class="product-grid">
