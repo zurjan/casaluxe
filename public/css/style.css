@@ -734,3 +734,76 @@ padding-bottom: 10px;
     font-size: 18px;
   }
 }
+
+/*nyprodukturlslug*/
+.nny-container {
+  margin: 50px auto;
+  width: 80%;
+  max-width: 900px;
+  padding: 20px;
+}
+
+.nny-product-card {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+@media (min-width: 768px) {
+  .nny-product-card {
+      flex-direction: row;
+  }
+}
+
+.nny-product-image img {
+  max-width: 100%;
+  height: auto;
+  transition: transform 0.3s;
+}
+
+.nny-product-image img:hover {
+  transform: scale(1.1);
+}
+
+.nny-product-info {
+  flex-grow: 1;
+  padding-left: 20px;
+}
+
+.nny-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nny-brand {
+  color: gray;
+}
+
+.nny-description {
+  margin-top: 10px;
+  color: #444;
+}
+
+.nny-price {
+  display: block;
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nny-add-to-cart {
+  margin-top: 15px;
+  background: gray;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.nny-add-to-cart:hover {
+  background: black;
+}

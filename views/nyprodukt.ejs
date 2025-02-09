@@ -67,13 +67,25 @@
     </div>
   </nav>
   <!--/ navbar -->
-<!--test -->
+
+<!-- main Section -->
+<div class="nny-container">
+    <div class="nny-product-card">
+        <div class="nny-product-image">
+            <img src="/<%= product.featuredImage %>" alt="<%= product.namn %>">
+        </div>
+        <div class="nny-product-info">
+            <h3 class="nny-title"><%= product.namn %></h3>
+            <p class="nny-brand"><%= product.brand %></p>
+            <p class="nny-description"><%= product.beskrivning %></p>
+            <span class="nny-price"><%= product.pris %> kr</span>
+            <button class="nny-add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+</div>
 
 
-<!--/test -->
-
-  
-  
+<!-- nyprodukt grid Section -->
   <div class="nyprodukt-grid">
     <% products.forEach(product => { %>
       <div class="nyprodukt-card">
@@ -105,14 +117,6 @@
       <% }); %>
     </div>
   </div>
-  
-  
-  
-  
-  
-  
-  
-
   
   <!--footer -->
   <footer class=" footer-container">
