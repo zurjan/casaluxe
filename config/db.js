@@ -39,3 +39,21 @@ db.serialize(() => {
 });
 
 module.exports = db;
+
+db.get("SELECT COUNT(*) AS count FROM posts", (err, row) => {
+  if (row.count === 0) {
+    const stmt = db.prepare("INSERT INTO posts (featuredImage, namn, beskrivning ,brand, pris, urlSlug ) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    stmt.run("/img/uppload/image1.jpg", "Nya Möbler","Smartphone XYZ är den senaste modellen från Brand XYZ. Den har en 6,5-tums AMOLED-skärm, en kraftfull Snapdragon 888-processor och ett 48 MP kamerasytem. Perfekt för både arbete och underhållning, med lång batteritid och snabb laddning." ,"Casa Luxe", "1990 SEK","Mörkgrå");
+    stmt.run("/img/uppload/image1.jpg", "Nya Möbler","Smartphone XYZ är den senaste modellen från Brand XYZ. Den har en 6,5-tums AMOLED-skärm, en kraftfull Snapdragon 888-processor och ett 48 MP kamerasytem. Perfekt för både arbete och underhållning, med lång batteritid och snabb laddning." ,"Casa Luxe", "1990 SEK","Mörkgrå");
+    stmt.run("/img/uppload/image1.jpg", "Nya Möbler","Smartphone XYZ är den senaste modellen från Brand XYZ. Den har en 6,5-tums AMOLED-skärm, en kraftfull Snapdragon 888-processor och ett 48 MP kamerasytem. Perfekt för både arbete och underhållning, med lång batteritid och snabb laddning." ,"Casa Luxe", "1990 SEK","Mörkgrå");
+    stmt.run("/img/uppload/image1.jpg", "Nya Möbler","Smartphone XYZ är den senaste modellen från Brand XYZ. Den har en 6,5-tums AMOLED-skärm, en kraftfull Snapdragon 888-processor och ett 48 MP kamerasytem. Perfekt för både arbete och underhållning, med lång batteritid och snabb laddning." ,"Casa Luxe", "1990 SEK","Mörkgrå");
+    stmt.run("/img/uppload/image1.jpg", "Nya Möbler","Smartphone XYZ är den senaste modellen från Brand XYZ. Den har en 6,5-tums AMOLED-skärm, en kraftfull Snapdragon 888-processor och ett 48 MP kamerasytem. Perfekt för både arbete och underhållning, med lång batteritid och snabb laddning." ,"Casa Luxe", "1990 SEK","Mörkgrå");
+    stmt.run("/img/uppload/image1.jpg", "Nya Möbler","Smartphone XYZ är den senaste modellen från Brand XYZ. Den har en 6,5-tums AMOLED-skärm, en kraftfull Snapdragon 888-processor och ett 48 MP kamerasytem. Perfekt för både arbete och underhållning, med lång batteritid och snabb laddning." ,"Casa Luxe", "1990 SEK","Mörkgrå");
+    stmt.run("/img/uppload/image1.jpg", "Nya Möbler","Smartphone XYZ är den senaste modellen från Brand XYZ. Den har en 6,5-tums AMOLED-skärm, en kraftfull Snapdragon 888-processor och ett 48 MP kamerasytem. Perfekt för både arbete och underhållning, med lång batteritid och snabb laddning." ,"Casa Luxe", "1990 SEK","Mörkgrå");
+    stmt.run("/img/uppload/image1.jpg", "Nya Möbler","Smartphone XYZ är den senaste modellen från Brand XYZ. Den har en 6,5-tums AMOLED-skärm, en kraftfull Snapdragon 888-processor och ett 48 MP kamerasytem. Perfekt för både arbete och underhållning, med lång batteritid och snabb laddning." ,"Casa Luxe", "1990 SEK","Mörkgrå");
+    stmt.finalize();
+  }
+});
+
+
+module.exports = db;
