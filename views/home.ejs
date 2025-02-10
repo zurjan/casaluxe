@@ -108,6 +108,39 @@
   <button type="submit">Filtrera</button>
 </form>
 
+<script>
+  document.getElementById("filter-form").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const sortOption = document.getElementById("sort").value;
+    const colorOption = document.getElementById("color").value;
+
+    fetch(`/products?sort=${sortOption}&color=${colorOption}`)
+      .then(response => response.json())
+      .then(data => {
+        const productGrid = document.querySelector(".product-grid");
+        productGrid.innerHTML = "";
+
+        data.forEach(product => {
+          const productCard = `
+            <div class="product-card">
+              <a href="product.ejs">
+                <img src="/img/products/${product.image}" alt="${product.name}">
+              </a>
+              <h2>${product.name}</h2>
+              <p class="price">${product.price} kr</p>
+              <div class="icons">
+                <button class="wishlist"><i class="fa fa-shopping-basket"></i></button>
+                <button class="home"><i class="fa fa-heart"></i></button>
+              </div>
+            </div>`;
+          productGrid.innerHTML += productCard;
+        });
+      });
+  });
+</script>
+
+
   <!-- main och produkt-grid -->
   
     <div class="product-grid">
