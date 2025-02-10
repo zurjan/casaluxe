@@ -49,7 +49,7 @@
       <div class="header-icons">
         <a href="/login"><i class='fa fa-user-circle' style='font-size:24px;color: black;'></i></button></a>
         <a href="#"><i class="fa fa-heart-o" style="font-size:24px;color:black"></i></a>
-        <a href="#"><i class="fa fa-shopping-cart" style="font-size:24px; color: #000"></i></a>
+        <a href="/basket"><i class="fa fa-shopping-cart" style="font-size:24px; color: #000"></i></a>
       </div>
 
     </div>
@@ -109,25 +109,38 @@
 </form>
 
   <!-- main och produkt-grid -->
-  
-    <div class="product-grid">
-      <% products.forEach(product=> { %>
-        <div class="product-card">
-        <a href="product.ejs"><img src="/img/products/<%= product.image %>" alt="<%= product.name %>">
+  <div class="product-grid">
+    <% products.forEach(product => { %>
+      <div class="product-card">
+        <a href="product.ejs">
+          <img src="/img/products/<%= product.image %>" alt="<%= product.name %>">
         </a>
-          <h2>
-            <%= product.name %>
-          </h2>
-          <p class="price">
-            <%= product.price %>
-          </p>
-          <div class="icons">
-            <button class="wishlist"><i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
-            <button class="home"><i class="fa fa-heart" aria-hidden="true"></i></button>
-          </div>
+        <h2><%= product.name %></h2>
+        <p class="price">$<%= product.price %></p>
+        <div class="icons">
+          <form action="/basket" method="POST">
+            <input type="hidden" name="productId" value="<%= product.id %>">
+            <button type="submit" class="wishlist">
+              <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+            </button>
+          </form>
+          <button class="home">
+            <i class="fa fa-heart" aria-hidden="true"></i>
+          </button>
         </div>
-        <% }); %>
-    </div>
+      </div>
+    <% }); %>
+  </div>
+  
+  
+  
+  
+
+
+
+
+
+    
   <!--footer -->
   <footer class=" footer-container">
     <!--footer accordeon menu -->
