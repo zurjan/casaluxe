@@ -57,3 +57,17 @@ db.get("SELECT COUNT(*) AS count FROM posts", (err, row) => {
 
 
 module.exports = db;
+
+// Create cart table if not exists
+db.serialize(() => {
+  db.run(`
+      CREATE TABLE IF NOT EXISTS basket (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          session_id TEXT NOT NULL,
+          product_id INTEGER NOT NULL,
+          quantity INTEGER DEFAULT 1
+      )
+  `);
+});
+
+module.exports = db;
