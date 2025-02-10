@@ -86,23 +86,25 @@
   </div>
 </div>
   
- <!-- Sorterings- och filtermenyer -->
- <form id="filter-form">
-  <label for="sort">Sortera:</label>
-  <select id="sort" name="sort">
-      <option value="">Välj...</option>
-      <option value="low-to-high">Pris: Lågt till högt</option>
-      <option value="high-to-low">Pris: Högt till lågt</option>
+<form action="/" method="GET">
+  <label for="slug">Kategori:</label>
+  <select name="slug" id="slug">
+    <option value="">Färger</option>
+    <option value="Soffa-1">Mörkgrå-Soffa</option>
+    <option value="Soffa-2">Grå-Soffa</option>
+    <option value="Soffa-3">Röd-Soffa</option>
+    <option value="Soffa-4">Beige-Soffa</option>
+    <option value="Soffa-5">Blå-Soffa</option>
+    <option value="Soffa-6">Svart-Soffa</option>
+    <option value="Soffa-7">Vit-Soffa</option>
+    <option value="Soffa-8">Turkos-Soffa</option>
   </select>
 
-  <label for="color">Färg:</label>
-  <select id="color" name="color">
-      <option value="">färger</option>
-      <option value="red">Röd</option>
-      <option value="blue">Blå</option>
-      <option value="beige">Beige</option>
-      <option value="vit">Vit</option>
-      <option value="Svart">Svart</option>
+  <label for="sort">Sort By:</label>
+  <select name="sort" id="sort">
+    <option value="">Sortera</option>
+    <option value="low-to-high">Pris:Lägst till högst</option>
+    <option value="high-to-low">Pris: Högst till lägst</option>
   </select>
 
   <button type="submit">Filtrera</button>
