@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../config/db');
 
-//  GET /basket → Namayesh Shopping Cart
+// GET /basket → Visa varukorgen
 router.get("/", (req, res) => {
     let session_id = req.session.id;
 
@@ -29,16 +29,16 @@ router.get("/", (req, res) => {
     });
 });
 
-
+// POST /basket → Lägg till produkt till varukorg
 router.post("/", (req, res) => {
-    const productId = req.body.productId;
-    let session_id = req.session.id;
+    const productId = req.body.productId; 
+    let session_id = req.session.id; 
 
     if (!productId) {
         return res.status(400).send("Product ID is required");
     }
 
-    
+    // Hämta produktinformation från databasen
     db.get("SELECT id, name, price, image FROM products WHERE id = ?", [productId], (err, product) => {
         if (err) {
             return res.status(500).json({ error: err.message });
@@ -48,14 +48,14 @@ router.post("/", (req, res) => {
             return res.status(404).send("Product not found.");
         }
 
-      
+        // Kolla om produkten redan finns i varukorgen
         db.get("SELECT * FROM basket WHERE product_id = ? AND session_id = ?", [productId, session_id], (err, row) => {
             if (err) {
                 return res.status(500).json({ error: err.message });
             }
 
             if (row) {
-               
+                // Om produkten redan finns i varukorgen, uppdatera mängden
                 db.run("UPDATE basket SET quantity = quantity + 1 WHERE product_id = ? AND session_id = ?", [productId, session_id], (err) => {
                     if (err) {
                         return res.status(500).json({ error: err.message });
@@ -63,7 +63,7 @@ router.post("/", (req, res) => {
                     res.redirect("back");
                 });
             } else {
-               
+                // Om produkten inte finns i varukorgen, lägg till den
                 db.run("INSERT INTO basket (session_id, product_id, quantity) VALUES (?, ?, 1)", [session_id, productId], (err) => {
                     if (err) {
                         return res.status(500).json({ error: err.message });
@@ -75,6 +75,7 @@ router.post("/", (req, res) => {
     });
 });
 
+// POST /basket/remove → Ta bort produkt från varukorg
 router.post("/remove", (req, res) => {
     const productId = req.body.productId;
     let session_id = req.session.id;
@@ -83,7 +84,7 @@ router.post("/remove", (req, res) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        res.redirect("/basket");
+        res.redirect("/basket"); 
     });
 });
 

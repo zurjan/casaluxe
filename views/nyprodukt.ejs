@@ -70,19 +70,24 @@
 
 <!-- main Section -->
 <div class="nny-container">
-    <div class="nny-product-card">
-        <div class="nny-product-image">
-            <img src="<%= product.featuredImage %>" alt="<%= product.namn %>">
-        </div>
-        <div class="nny-product-info">
-            <h3 class="nny-title"><%= product.namn %></h3>
-            <p class="nny-brand"><%= product.brand %></p>
-            <p class="nny-description"><%= product.beskrivning %></p>
-            <span class="nny-price"><%= product.pris %> kr</span>
-            <button class="nny-add-to-cart">Add to Cart</button>
-        </div>
-    </div>
+  <div class="nny-product-card">
+      <div class="nny-product-image">
+          <img src="<%= product.featuredImage %>" alt="<%= product.namn %>">
+      </div>
+      <div class="nny-product-info">
+          <h3 class="nny-title"><%= product.namn %></h3>
+          <p class="nny-brand"><%= product.brand %></p>
+          <p class="nny-description"><%= product.beskrivning %></p>
+          <span class="nny-price"><%= product.pris %> kr</span>
+          <!-- Add to Cart form -->
+          <form action="/basket" method="POST">
+              <input type="hidden" name="productId" value="<%= product.id %>">
+              <button type="submit" class="nny-add-to-cart">Add to Cart</button>
+          </form>
+      </div>
+  </div>
 </div>
+
 
 
 <!-- nyprodukt grid Section -->
