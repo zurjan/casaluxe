@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+  <!-- meta -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="Casa Luxe">
+  <meta name="language" content="sv">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Case Luxe - Trändiga Möbler">
+  <meta property="og:description" content="Casa Luxe">
+  <meta property="og:url" content="https://www.casaluxe.se">
+  <meta property="og:image" content="https://casaluxe.se/og-image.jpg">
+  <!--/ meta -->
+
+  <!-- title -->
+  <title>Casa Luxe | Hem</title>
+  <!--/ title -->
+
+  <!-- links -->
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="/img/logo/logo.webp">
+  <!--/ favicon -->
+
+  <!-- css -->
+  <link href='/css/style.css' rel='stylesheet' />
+  <!-- fonawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- css -->
+</head>
+
+
+
+<body>
+  <!-- header -->
+  <header>
+    <div class="header-top">
+      <div class="header-logo">
+        <a href="/"><img class="logo" src="/img/logo/logo.webp" alt="logo"></a>
+      </div>
+      <div class="search-top">
+        <input type="text" id="myInput" placeholder="Vad letar du efter?" title="Type in a name">
+      </div>
+
+      <div class="header-icons">
+        <a href="/login"><i class='fa fa-user-circle' style='font-size:24px;color: black;'></i></button></a>
+        <a href="#"><i class="fa fa-heart-o" style="font-size:24px;color:black"></i></a>
+        <a href="#"><i class="fa fa-shopping-cart" style="font-size:24px; color: #000"></i></a>
+      </div>
+
+    </div>
+  </header>
+  <!--/ header -->
+
+  <div class="basket-container">
+    <h1><%= title %></h1>
+
+    <!--  Basket Items List -->
+    <ul class="basket-items">
+        <% if (basket.length > 0) { %>
+            <% basket.forEach(item => { %>
+                <li class="basket-item">
+                    <img src="/img/products/<%= item.image %>" alt="<%= item.name %>" width="100">
+                    <div>
+                        <h3><%= item.name %></h3>
+                        <p>Price: $<%= item.price %></p>
+                        <p>Quantity: <%= item.quantity %></p>
+                        <p>Total Price: $<%= item.total_price %></p>
+                    </div>
+                    <!--  Remove Product Form -->
+                    <form action="/basket/remove" method="POST">
+                        <input type="hidden" name="productId" value="<%= item.product_id %>">
+                        <button type="submit">Remove</button>
+                    </form>
+                </li>
+            <% }); %>
+            <hr>
+            <!--  Total Price -->
+            <div class="basket-total">
+                <h3>Total: $<%= totalSum %></h3>
+            </div>
+
+            <!--  Betala Button -->
+            <div class="betalaknapp-container">
+                <button class="betalaknapp" onclick="window.location.href='/payment'">Betala</button>
+            </div>
+        <% } else { %>
+            <!--  Empty Basket Message -->
+            <p class="empty-basket-message">Basket is empty!</p>
+        <% } %>
+    </ul>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  <script src="/js/main.js"></script>
+</body>
+
+</html>
