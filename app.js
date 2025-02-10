@@ -25,6 +25,7 @@ const adminRouter = require('./routes/admin');
 const authRouter = require('./routes/auth');
 const contactRouter = require('./routes/contact');
 const categoryRouter = require('./routes/category');
+const nyproduktRouter = require('./routes/nyprodukt');
 
 app.use('/', indexRouter);
 app.use('/product', productRouter);
@@ -32,6 +33,7 @@ app.use('/admin', adminRouter);
 app.use('/auth', authRouter);
 app.use('/contact', contactRouter);
 app.use('/category', categoryRouter);
+app.use('/nyprodukt', nyproduktRouter);
 
 // Exportera app (❗ Viktigt för bin/www.js ❗)
 module.exports = app;
