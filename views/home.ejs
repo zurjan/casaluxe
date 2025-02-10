@@ -68,6 +68,24 @@
   </nav>
   <!--/ navbar -->
 
+  <!-- Nyprodukt Slideshow Section -->
+<div class="mt-60 mx-16">
+  <h1 class="text-left text-black text-2xl font-bold max-w-xs mb-6">
+    Nya produkter
+  </h1>
+  <div class="overflow-x-auto whitespace-nowrap border-4 border-gray-200 rounded-lg relative h-52">
+    <div class="inline-flex">
+      <% posts.forEach(post => { %>
+        <div class="mr-4">
+          <a href="/nyprodukt/<%= post.urlSlug %>">
+            <img src="<%= post.featuredImage %>" alt="image" class="w-86 h-60 object-cover rounded-lg transition-transform duration-300 transform hover:scale-110">
+          </a>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</div>
+  
  <!-- Sorterings- och filtermenyer -->
  <form id="filter-form">
   <label for="sort">Sortera:</label>
@@ -90,9 +108,8 @@
   <button type="submit">Filtrera</button>
 </form>
 
-
   <!-- main och produkt-grid -->
-  <main>
+  
     <div class="product-grid">
       <% products.forEach(product=> { %>
         <div class="product-card">
@@ -111,28 +128,6 @@
         </div>
         <% }); %>
     </div>
-  </main>
-
-  <script>
-    document.getElementById('filter-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        
-        // Hämta valda värden
-        let sort = document.getElementById('sort').value;
-        let color = document.getElementById('color').value;
-
-        // Bygg URL-sträng med parametrar
-        let queryString = "?";
-        if (sort) queryString += `sort=${sort}&`;
-        if (color) queryString += `color=${color}`;
-
-        // Navigera till ny URL med filter och sortering
-        window.location.href = queryString;
-    });
-</script>
-
-
-
   <!--footer -->
   <footer class=" footer-container">
     <!--footer accordeon menu -->

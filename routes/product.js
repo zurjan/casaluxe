@@ -5,7 +5,7 @@ const db = require('../config/db');
 // Visa produkt
 router.get('/:id', (req, res) => {
   const productId = req.params.id;
-  db.get("SELECT * FROM products WHERE id = ?", [productId], (err, row) => {
+  db.get("SELECT * FROM products WHERE id = ?", [postsId], (err, row) => {
     if (err) {
       throw err;
     }
