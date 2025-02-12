@@ -67,9 +67,9 @@
                     <img src="/img/products/<%= item.image %>" alt="<%= item.name %>" width="100">
                     <div>
                         <h3><%= item.name %></h3>
-                        <p>Price: $<%= item.price %></p>
+                        <p>Price: SEK <%= item.price %></p>
                         <p>Quantity: <%= item.quantity %></p>
-                        <p>Total Price: $<%= item.total_price %></p>
+                        <p>Total Price: SEK <%= item.total_price %></p>
                     </div>
                     <!--  Remove Product Form -->
                     <form action="/basket/remove" method="POST">
@@ -81,7 +81,7 @@
             <hr>
             <!--  Total Price -->
             <div class="basket-total">
-                <h3>Total: $<%= totalSum %></h3>
+                <h3>Total: SEK <%= totalSum %></h3>
             </div>
 
             <!--  Betala Button -->
