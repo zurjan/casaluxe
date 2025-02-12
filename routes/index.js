@@ -2,48 +2,47 @@ const express = require('express');
 const router = express.Router();
 const db = require('../config/db');
 
-// Home Page Route (med filtrering och sortering)
+// Home Page Route (Render EJS Page)
 router.get('/', (req, res) => {
   try {
-    let sort = req.query.sort;  // t.ex. 'low-to-high', 'high-to-low'
-    let slug = req.query.slug;  // t.ex. 'sofas', 'tables'
+    let sort = req.query.sort;  // 'low-to-high', 'high-to-low'
+    let slug = req.query.slug;  // Product category slug
 
-    // Grundläggande SQL-query för att hämta produkter
     let productQuery = "SELECT * FROM products";
     let conditions = [];
     let params = [];
 
-    // Filtrering baserat på slug (kategori/produkt-typ)
+    // Apply filtering based on category (slug)
     if (slug) {
       conditions.push("slug = ?");
       params.push(slug);
     }
 
-    // Om det finns villkor, lägg till WHERE-klausul
+    // Add WHERE condition if filtering is applied
     if (conditions.length > 0) {
       productQuery += " WHERE " + conditions.join(" AND ");
     }
 
-    // Sortering baserat på pris
+    // Apply sorting
     if (sort === "low-to-high") {
       productQuery += " ORDER BY price ASC";
     } else if (sort === "high-to-low") {
       productQuery += " ORDER BY price DESC";
     }
 
-    // Kör SQL-fråga för att hämta filtrerade produkter
+    // Execute the database query
     db.all(productQuery, params, (err, productRows) => {
       if (err) {
         throw err;
       }
 
-      // Hämta posts (för slideshow)
+      // Fetch posts for the slideshow
       db.all("SELECT * FROM posts", [], (err, postRows) => {
         if (err) {
           throw err;
         }
 
-        // Skicka data till frontend för rendering
+        // Render home.ejs with products
         res.render('home', { 
           products: productRows, 
           posts: postRows, 
@@ -55,6 +54,45 @@ router.get('/', (req, res) => {
   } catch (err) {
     console.error('Database Error:', err);
     res.status(500).send('Database Error');
+  }
+});
+
+// API Route to Get Filtered Products as JSON
+router.get('/products', (req, res) => {
+  try {
+    let sort = req.query.sort;
+    let slug = req.query.slug;
+
+    let productQuery = "SELECT * FROM products";
+    let conditions = [];
+    let params = [];
+
+    if (slug) {
+      conditions.push("slug = ?");
+      params.push(slug);
+    }
+
+    if (conditions.length > 0) {
+      productQuery += " WHERE " + conditions.join(" AND ");
+    }
+
+    if (sort === "low-to-high") {
+      productQuery += " ORDER BY price ASC";
+    } else if (sort === "high-to-low") {
+      productQuery += " ORDER BY price DESC";
+    }
+
+    db.all(productQuery, params, (err, products) => {
+      if (err) {
+        console.error('Database Error:', err);
+        return res.status(500).json({ error: "Database Error" });
+      }
+
+      res.json(products); // Return products as JSON response
+    });
+  } catch (err) {
+    console.error('Error fetching products:', err);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
