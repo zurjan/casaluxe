@@ -73,7 +73,7 @@
   <main class="contact">
     <div class="container">
       <h3>Kontakta Oss</h3>
-      <form action="/action_page.php">
+      <form action="/action_page.php" method="post">
         <label for="fname">Förnamn</label>
         <input type="text" id="fname" name="firstname" placeholder="Ditt namn..">
 
@@ -88,8 +88,11 @@
           <option value="usa">Denmark</option>
         </select>
 
+        <label for="e-mail">Subject</label>
+        <textarea id="email" name="email" placeholder="Skriv epostadress här.." style="height:50px"></textarea>
         <label for="subject">Subject</label>
         <textarea id="subject" name="subject" placeholder="Skriv din text här.." style="height:200px"></textarea>
+        
 
         <input type="submit" value="Skicka" name="send">
       </form>

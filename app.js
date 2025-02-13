@@ -19,31 +19,33 @@ app.use(session({
   saveUninitialized: true
 }));
 
-const paymentRouter = require('./routes/payment');
-app.use('/payment', paymentRouter);
+
+
 
 
 // Rutter
 const indexRouter = require('./routes/index');
 const productRouter = require('./routes/product');
-const adminRouter = require('./routes/admin');
+const adminRoutes = require('./routes/admin');
 const authRouter = require('./routes/auth');
 const contactRouter = require('./routes/contact');
 const categoryRouter = require('./routes/category');
 const nyproduktRouter = require('./routes/nyprodukt');
 const basketRouter = require('./routes/basket');
+const paymentRouter = require('./routes/payment');
 
 
 
 
 app.use('/', indexRouter);
 app.use('/product', productRouter);
-app.use('/admin', adminRouter);
+app.use('/admin', adminRoutes);
 app.use('/auth', authRouter);
 app.use('/contact', contactRouter);
 app.use('/category', categoryRouter);
 app.use('/nyprodukt', nyproduktRouter);
 app.use('/basket', basketRouter);
+app.use('/payment', paymentRouter);
 
 // Exportera app (❗ Viktigt för bin/www.js ❗)
 module.exports = app;
