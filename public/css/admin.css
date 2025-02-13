@@ -83,7 +83,7 @@ h1, h2 {
   background-color: #218838;
 }
 
-/* Target only Add & Edit Product pages */
+/* Targetar bara lägg till och edit sidan */
 .admin-add-edit-product {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
@@ -91,7 +91,7 @@ h1, h2 {
   padding: 0;
 }
 
-/* Center the form container */
+/*Centrerar form containeren */
 .admin-add-edit-product .container {
   width: 50%;
   margin: auto;
@@ -108,14 +108,14 @@ h1, h2 {
   gap: 15px;
 }
 
-/* Add left margin to headings & labels */
+/* Vänster margin */
 .admin-add-edit-product h1,
 .admin-add-edit-product label {
   margin-left: 20px;  /* Adds space to the left */
   display: block;
 }
 
-/* Align inputs & textareas to match labels */
+/* Align inputs & textareas för att matcha labels */
 .admin-add-edit-product input,
 .admin-add-edit-product textarea {
   width: calc(100% - 40px); /* Keeps inputs inside container */
@@ -134,8 +134,8 @@ h1, h2 {
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  margin-left: 20px;  /* Aligns button with form inputs */
-  width: calc(100% - 40px); /* Keeps button aligned with inputs */
+  margin-left: 20px; 
+  width: calc(100% - 40px); 
 }
 
 .admin-add-edit-product button:hover {
