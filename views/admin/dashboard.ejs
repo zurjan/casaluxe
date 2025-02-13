@@ -7,13 +7,21 @@
     <link href="/css/admin.css" rel="stylesheet" />
 </head>
 <body>
-    <% include admin/nav %> <!-- Inkludera navigeringen här -->
+    <nav class="top-nav">
+        <div class="topnav" id="myTopnav">
+          <a href="/" class="active"><i class="fa fa-home" style="font-size:20px;color:black"></i></a>
+          <a href="#news"><i class="fa fa-shopping-cart" style="font-size:18px;color:black"></i> Butiker</a>
+          <a href="/contact">Kontakta Oss</a>
+          <a href="#about">About</a>
+          <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+        </div>
+      </nav>
     <div class="container">
         <h1>Admin Dashboard</h1>
         <a href="/admin/products/add" class="add-product-btn">Lägg till produkt</a>
         <h2>Produkter</h2>
         <div>
-            <% if (products.length === 0) { %>
+            <% if (!products || products.length === 0) { %> <!-- Om det inte finns några produkter -->
                 <p>Inga produkter tillagda än.</p>
             <% } else { %>
                 <% products.forEach(product => { %>
