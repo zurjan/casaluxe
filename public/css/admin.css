@@ -1,84 +1,143 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-  }
-  
-  /* Styling för navigationmenyn */
-  nav {
-    background-color: #333;
-    padding: 10px;
-    color: white;
-  }
-  
-  nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  nav ul li {
-    display: inline;
-    margin-right: 20px;
-  }
-  
-  nav ul li a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  nav ul li a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Huvudstyling */
-  .container {
-    margin: 20px;
-  }
-  
-  h1, h2 {
-    color: #333;
-  }
-  
-  /* Styling för produktlistan */
-  .product {
-    background-color: white;
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin: 10px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .product h3 {
-    margin: 0;
-    font-size: 1.2em;
-  }
-  
-  .product p {
-    margin: 10px 0;
-  }
-  
-  .product a {
-    color: #0066cc;
-    text-decoration: none;
-  }
-  
-  .product a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Styling för knapp */
-  .add-product-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 10px 0;
-    background-color: #28a745;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-  }
-  
-  .add-product-btn:hover {
-    background-color: #218838;
-  }
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+/* Styling för navigationmenyn */
+nav {
+  background-color: #333;
+  padding: 10px;
+  color: white;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Huvudstyling */
+.container {
+  margin: 20px;
+}
+
+h1, h2 {
+  color: #333;
+}
+
+/* Styling för produktlistan */
+.product {
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product h3 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.product p {
+  margin: 10px 0;
+}
+
+.product a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.product a:hover {
+  text-decoration: underline;
+}
+
+/* Styling för knapp */
+.add-product-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px 0;
+  background-color: #28a745;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.add-product-btn:hover {
+  background-color: #218838;
+}
+
+/* Targetar bara lägg till och edit sidan */
+.admin-add-edit-product {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+/*Centrerar form containeren */
+.admin-add-edit-product .container {
+  width: 50%;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form styling */
+.admin-add-edit-product form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Vänster margin */
+.admin-add-edit-product h1,
+.admin-add-edit-product label {
+  margin-left: 20px;  /* Adds space to the left */
+  display: block;
+}
+
+/* Align inputs & textareas för att matcha labels */
+.admin-add-edit-product input,
+.admin-add-edit-product textarea {
+  width: calc(100% - 40px); /* Keeps inputs inside container */
+  margin-left: 20px; /* Matches label spacing */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Button styling */
+.admin-add-edit-product button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 20px; 
+  width: calc(100% - 40px); 
+}
+
+.admin-add-edit-product button:hover {
+  background-color: #0056b3;
+}

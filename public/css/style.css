@@ -909,3 +909,212 @@ h1.mb-6 {
 .nny-add-to-cart:hover {
   background: black;
 }
+
+/*basket sidan*/
+
+/*  Container Baraye Basket */
+.basket-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/*  Heading */
+h1 {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 2.5rem;
+  color: #333;
+}
+
+/* Table Layout Baraye Basket */
+.basket-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.basket-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: white;
+  border: 1px solid #ddd;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.basket-item img {
+  max-width: 200px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.basket-item h3 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: #333;
+}
+
+.basket-item p {
+  font-size: 1rem;
+  color: #555;
+  margin: 5px 0;
+}
+
+/* Remove Button */
+.basket-item form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.basket-item button {
+  padding: 8px 16px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.basket-item button:hover {
+  background-color: #d32f2f;
+}
+
+/* Total Price Section */
+hr {
+  border: 0;
+  border-top: 1px solid #ddd;
+  margin: 20px 0;
+}
+
+.basket-total h3 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Empty Basket Message */
+.empty-basket-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #777;
+  margin-top: 30px;
+}
+
+/* Responsive Style for Screens <= 768px */
+@media screen and (max-width: 768px) {
+  .basket-item {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  }
+
+  .basket-item img {
+      margin: 0 0 10px 0;
+  }
+
+  .basket-item button {
+      width: 100%;
+  }
+
+  .basket-total h3 {
+      font-size: 1.2rem;
+  }
+}
+
+/*  For Very Small Screens (<= 480px) */
+@media screen and (max-width: 480px) {
+  h1 {
+      font-size: 1.8rem;
+  }
+
+  .basket-item {
+      padding: 10px;
+  }
+
+  .basket-item h3 {
+      font-size: 1.1rem;
+  }
+
+  .basket-item p {
+      font-size: 0.9rem;
+  }
+}
+
+/*betala sidan*/
+/*  Betala Button */
+.betalaknapp-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.betalaknapp {
+  padding: 15px 30px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.betalaknapp:hover {
+  background-color: #45a049;
+}
+
+/* Betalningssida Styling */
+.payment-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f1f1f1;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+.payment-message {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+}
+
+.payment-message h1 {
+    font-size: 2.5rem;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+.payment-message p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.payment-message button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.payment-message button:hover {
+    background-color: #45a049;
+}
