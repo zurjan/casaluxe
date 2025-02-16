@@ -69,100 +69,105 @@
   <!--/ navbar -->
 
   <!-- Nyprodukt Slideshow Section -->
-<div class="mt-60 mx-16">
-  <h1 class="text-left text-black text-2xl font-bold max-w-xs mb-6">
-    Nya produkter
-  </h1>
-  <div class="overflow-x-auto whitespace-nowrap border-4 border-gray-200 rounded-lg relative h-52">
-    <div class="inline-flex">
-      <% posts.forEach(post => { %>
-        <div class="mr-4">
-          <a href="/nyprodukt/<%= post.urlSlug %>">
-            <img src="<%= post.featuredImage %>" alt="image" class="w-86 h-60 object-cover rounded-lg transition-transform duration-300 transform hover:scale-110">
-          </a>
-        </div>
-      <% }) %>
+  <div class="mt-60 mx-16">
+    <h1 class="text-left text-black text-2xl font-bold max-w-xs mb-6">
+      Nya produkter
+    </h1>
+    <div class="overflow-x-auto whitespace-nowrap border-4 border-gray-200 rounded-lg relative h-52">
+      <div class="inline-flex">
+        <% posts.forEach(post=> { %>
+          <div class="mr-4">
+            <a href="/nyprodukt/<%= post.urlSlug %>">
+              <img src="<%= post.featuredImage %>" alt="image"
+                class="w-86 h-60 object-cover rounded-lg transition-transform duration-300 transform hover:scale-110">
+            </a>
+          </div>
+          <% }) %>
+      </div>
     </div>
   </div>
-</div>
-  
-<form action="/" method="GET">
-  <label for="slug">Kategori:</label>
-  <select name="slug" id="slug">
-    <option value="">Färger</option>
-    <option value="Soffa-1">Mörkgrå-Soffa</option>
-    <option value="Soffa-2">Grå-Soffa</option>
-    <option value="Soffa-3">Röd-Soffa</option>
-    <option value="Soffa-4">Beige-Soffa</option>
-    <option value="Soffa-5">Blå-Soffa</option>
-    <option value="Soffa-6">Svart-Soffa</option>
-    <option value="Soffa-7">Vit-Soffa</option>
-    <option value="Soffa-8">Turkos-Soffa</option>
-  </select>
 
-  <label for="sort">Sort By:</label>
-  <select name="sort" id="sort">
-    <option value="">Sortera</option>
-    <option value="low-to-high">Pris:Lägst till högst</option>
-    <option value="high-to-low">Pris: Högst till lägst</option>
-  </select>
+  <form action="/" method="GET">
 
-  <button type="submit">Filtrera</button>
-</form>
+    <label for="sort">Sort By:</label>
+    <select name="sort" id="sort">
+      <option value="">Pris</option>
+      <option value="low-to-high">Pris:Lägst till högst</option>
+      <option value="high-to-low">Pris: Högst till lägst</option>
+    </select>
 
-<script>
-  document.getElementById("filter-form").addEventListener("submit", function (event) {
-    event.preventDefault();
 
-    const sortOption = document.getElementById("sort").value;
-    const colorOption = document.getElementById("color").value;
+    <label for="slug">Kategori:</label>
+    <select name="slug" id="slug">
+      <option value="">Färger</option>
+      <option value="Soffa-1">Mörkgrå-Soffa</option>
+      <option value="Soffa-2">Grå-Soffa</option>
+      <option value="Soffa-3">Röd-Soffa</option>
+      <option value="Soffa-4">Beige-Soffa</option>
+      <option value="Soffa-5">Blå-Soffa</option>
+      <option value="Soffa-6">Svart-Soffa</option>
+      <option value="Soffa-7">Vit-Soffa</option>
+      <option value="Soffa-8">Turkos-Soffa</option>
+    </select>
 
-    fetch(`/products?sort=${sortOption}&color=${colorOption}`)
-      .then(response => response.json())
-      .then(data => {
-        const productGrid = document.querySelector(".product-grid");
-        productGrid.innerHTML = "";
 
-        data.forEach(product => {
-          const productCard = `
-            <div class="product-card">
-              <a href="product.ejs">
-                <img src="/img/products/${product.image}" alt="${product.name}">
-              </a>
-              <h2>${product.name}</h2>
-              <p class="price">${product.price} kr</p>
-              <div class="icons">
-                <button class="wishlist"><i class="fa fa-shopping-basket"></i></button>
-                <button class="home"><i class="fa fa-heart"></i></button>
-              </div>
-            </div>`;
-          productGrid.innerHTML += productCard;
+
+    <button type="submit">Filtrera</button>
+    <button type="button" id="clear-filters">Rensa Filter</button>
+  </form>
+
+  <script>
+    document.getElementById("clear-filters").addEventListener("click", function () {
+      document.getElementById("sort").value = "";
+      document.getElementById("slug").value = "";
+
+      fetch(`/products`)  // Skicka en förfrågan utan filterparametrar
+        .then(response => response.json())
+        .then(data => {
+          const productGrid = document.querySelector(".product-grid");
+          productGrid.innerHTML = ""; // Rensa nuvarande produkter
+
+          data.forEach(product => {
+            const productCard = `
+          <div class="product-card">
+            <a href="product.ejs">
+              <img src="/img/products/${product.image}" alt="${product.name}">
+            </a>
+            <h2>${product.name}</h2>
+            <p class="price">${product.price} kr</p>
+            <div class="icons">
+              <button class="wishlist"><i class="fa fa-shopping-basket"></i></button>
+              <button class="home"><i class="fa fa-heart"></i></button>
+            </div>
+          </div>`;
+            productGrid.innerHTML += productCard;
+          });
         });
-      });
-  });
-</script>
+    });
 
+  </script>
 
   <!-- main och produkt-grid -->
-  
-    <div class="product-grid">
-      <% products.forEach(product=> { %>
-        <div class="product-card">
-        <a href="product.ejs"><img src="/img/products/<%= product.image %>" alt="<%= product.name %>">
-        </a>
-          <h2>
-            <%= product.name %>
-          </h2>
-          <p class="price">
-            <%= product.price %>
-          </p>
-          <div class="icons">
-            <button class="wishlist"><i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
-            <button class="home"><i class="fa fa-heart" aria-hidden="true"></i></button>
-          </div>
+
+  <div class="product-grid">
+    <% products.forEach(product=> { %>
+      <div class="product-card">
+        <img src="/img/products/<%= product.image %>" alt="<%= product.name %>">
+
+        <h2>
+          <%= product.name %>
+        </h2>
+        <p class="price">
+          <%= product.price %>
+        </p>
+        <div class="icons">
+          <button class="wishlist"><i class="fa fa-shopping-basket" aria-hidden="true"></i></button>
+          <button class="home"><i class="fa fa-heart" aria-hidden="true"></i></button>
         </div>
-        <% }); %>
-    </div>
+      </div>
+      <% }); %>
+  </div>
+
   <!--footer -->
   <footer class=" footer-container">
     <!--footer accordeon menu -->
